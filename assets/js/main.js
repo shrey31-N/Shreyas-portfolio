@@ -72,6 +72,19 @@ const srLeft = ScrollReveal({
 srLeft.reveal(".about-info", { delay: 100 });
 srLeft.reveal(".contact-info", { delay: 100 });
 
+// Display a notification
+  const notificationArea = document.getElementById("notifications");
+  const notification = document.createElement("div");
+  notification.classList.add("notification");
+  notification.innerText = `Message from ${name} has been sent!`;
+
+  notificationArea.appendChild(notification);
+
+  // Automatically remove the notification after 5 seconds
+  setTimeout(() => {
+    notification.remove();
+  }, 5000);
+
 /* -- ABOUT SKILLS & FORM BOX -- */
 const srRight = ScrollReveal({
   origin: "right",
