@@ -1,0 +1,25 @@
+name: Shreyas_portfolio
+
+on:
+  push:
+    branches:
+      - main   # deploy whenever you push to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESSKEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESSKEY_ID }}
+          aws-region: ${{ secrets.us-east-1 }}
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync . s3://shrey-s3-demo-bucket --delete --acl public-read
