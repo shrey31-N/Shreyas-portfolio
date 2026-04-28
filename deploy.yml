@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing...
+  build:
+    commands:
+      - echo Build started
+  post_build:
+    commands:
+      - echo Build completed
+
+artifacts:
+  files:
+    - '**/*'
